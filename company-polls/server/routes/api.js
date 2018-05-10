@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const mongodb = require('../model/mongo');
 
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('api works');
+/* GET companies listing. */
+router.post('/', (req, res) => {
+  mongodb.insert({companyId: req.body.companyId, experience: req.body.experience}).then((data) => {
+    res.status(201).send('Your poll results were successfully saved!');
+  });
 });
 
 module.exports = router;
