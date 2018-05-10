@@ -8,24 +8,16 @@ const api = require('./server/routes/api');
 const companyNames = require('./server/routes/company-names');
 
 const app = express();
-const url = 'mongodb://alen:alen@ds119080.mlab.com:19080/company-polls';
-const db = require('monk')(url);
-const collection = db.get('company-poll-answers');
 
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-// Mongo connection
-collection.find({}).then((res) => {
-  console.log(res);
-});
-
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
-app.use('/api', api);
+app.use('/new-poll', api);
 app.use('/companies', companyNames);
 
 // Catch all other routes and return the index file
