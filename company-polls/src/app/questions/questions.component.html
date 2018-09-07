@@ -25,6 +25,30 @@
             </select>
           </div>
         </div>
+        <div class="col-12" style="margin-bottom: 20px;">
+          <div class="form-group">
+            <label for="last-position">What position did you hold at your last job?</label>
+            <select name="last-position" id="last-position" class="form-control" required ngModel>
+              <option value=""></option>
+              <option value="{{position}}" *ngFor="let position of positionsAtCompany">{{position}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12" style="margin-bottom: 20px;">
+          <div class="form-group">
+            <label for="salary-range">In what range was your salary? (in dollars)</label>
+            <select name="salary-range" id="salary-range" class="form-control" required ngModel>
+              <option value=""></option>
+              <option value="{{salaryRange}}" *ngFor="let salaryRange of salaryRanges">{{salaryRange}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12" style="margin-bottom: 20px;">
+          <div class="form-group">
+            <label for="responsibilities">Describe in 800 characters or less what you did at your last job:</label>
+            <textarea id="responsibilities" maxlength="800" class="form-control" ngModel name="responsibilities" required placeholder="Your responsibilities" cols="30" rows="6"></textarea>
+          </div>
+        </div>
         <div class="col-12">
           <button type="submit"  class="btn btn-success float-right" [disabled]="!f.valid">Submit</button>
         </div>

@@ -17,6 +17,20 @@ export class QuestionsComponent implements OnInit {
     '3-4 years',
     'over 4 years'
   ];
+  positionsAtCompany = [
+    'Intern',
+    'Junior',
+    'Mid-level',
+    'Senior',
+    'Tech Lead',
+    'Other'
+  ];
+  salaryRanges = [
+    '0-1000',
+    '1000-2500',
+    '2500-5000',
+    'more than 5000'
+  ];
   messageFromBackend = '';
 
   constructor(private companiesService: CompaniesService, private questionService: QuestionsService) {
@@ -33,11 +47,15 @@ export class QuestionsComponent implements OnInit {
     const object = {
       employeeName: form.value.name,
       companyId: +form.value['company-id'],
-      experience: form.value.experience
+      experience: form.value.experience,
+      lastPosition: form.value['last-position'],
+      salaryRange: form.value['salary-range'],
+      responsibilities: form.value['responsibilities']
     };
     this.questionService.addNewEntryInPolls(object).subscribe((data) => {
       this.messageFromBackend = (<any>data)._body;
       this.toggleModal(modalMessage);
+      form.resetForm();
     });
   }
 
