@@ -8,9 +8,9 @@ router.post('/', (req, res) => {
   mongodb.insert({
     employeeName: body.employeeName, companyId: body.companyId,
     experience: body.experience, lastPosition: body.lastPosition, salaryRange: body.salaryRange,
-    responsibilities: body.responsibilities
+    responsibilities: body.responsibilities, companyPositionId: body.companyPositionId
   }).then((data) => {
-    res.status(201).send('Your poll results were successfully saved!');
+    res.status(201).send({message: 'Your poll results were successfully saved!'});
   });
 });
 

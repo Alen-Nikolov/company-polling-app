@@ -11,7 +11,7 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <label for="company-id">Company name</label>
-          <select name="company-id" id="company-id" class="form-control" required ngModel>
+          <select name="company-id" id="company-id" class="form-control" required ngModel (change)="selectCompany($event)">
             <option value=""></option>
             <option value="{{company.company_id}}" *ngFor="let company of companies">{{company.company_name}}</option>
           </select>
@@ -22,6 +22,15 @@
             <select name="experience" id="experience" class="form-control" required ngModel>
               <option value=""></option>
               <option value="{{range}}" *ngFor="let range of experienceRanges">{{range}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12" style="margin-bottom: 20px;">
+          <div class="form-group">
+            <label for="last-position">What position was your title?</label>
+            <select name="last-title" id="your-title" class="form-control" required ngModel>
+              <option value=""></option>
+              <option value="{{title.id}}" *ngFor="let title of companyTitles">{{title.position}}</option>
             </select>
           </div>
         </div>

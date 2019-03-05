@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Http} from "@angular/http";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class QuestionsService {
 
-  constructor(private http: Http) { }
-
-  addNewEntryInPolls(newPoll) {
-    return this.http.post('/new-poll', newPoll);
+  constructor(private http: HttpClient) {
   }
 
+  addNewEntryInPolls(newPoll): Observable<any> {
+    return this.http.post<Observable<any>>('/new-poll', newPoll);
+  }
 }

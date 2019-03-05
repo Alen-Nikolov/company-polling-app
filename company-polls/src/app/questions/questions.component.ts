@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {CompaniesService} from "../companies.service";
-import {QuestionsService} from "../questions.service";
-import {NgForm} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {CompaniesService} from '../companies.service';
+import {QuestionsService} from '../questions.service';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-questions',
@@ -9,15 +9,16 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
+  companyTitles;
   companies = '';
-  experienceRanges = [
+  experienceRanges: string[] = [
     '0-6 months',
     '6-12 months',
     '1-3 years',
     '3-4 years',
     'over 4 years'
   ];
-  positionsAtCompany = [
+  positionsAtCompany: string[] = [
     'Intern',
     'Junior',
     'Mid-level',
@@ -25,7 +26,7 @@ export class QuestionsComponent implements OnInit {
     'Tech Lead',
     'Other'
   ];
-  salaryRanges = [
+  salaryRanges: string[] = [
     '0-1000',
     '1000-2500',
     '2500-5000',
@@ -40,7 +41,8 @@ export class QuestionsComponent implements OnInit {
   ngOnInit() {
     this.companiesService.getAllCompanies().subscribe(companies => {
       this.companies = companies;
-    })
+      this.companyTitles =  companies.titles;
+    });
   }
 
   onSubmit(form: NgForm, modalMessage) {
@@ -50,10 +52,11 @@ export class QuestionsComponent implements OnInit {
       experience: form.value.experience,
       lastPosition: form.value['last-position'],
       salaryRange: form.value['salary-range'],
-      responsibilities: form.value['responsibilities']
+      responsibilities: form.value['responsibilities'],
+      companyPositionId: +form.value['last-title']
     };
     this.questionService.addNewEntryInPolls(object).subscribe((data) => {
-      this.messageFromBackend = (<any>data)._body;
+      this.messageFromBackend = data.message;
       this.toggleModal(modalMessage);
       form.resetForm();
     });
@@ -64,5 +67,11 @@ export class QuestionsComponent implements OnInit {
     setTimeout(() => {
       modalMessage.classList.add('fade');
     }, 4000);
+  }
+
+  selectCompany($event) {
+    this.companiesService.getCompanyPositions($event.target.value).subscribe(data => {
+      this.companyTitles = data;
+    });
   }
 }
