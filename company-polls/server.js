@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 // Get our API routes
 const api = require('./server/routes/api');
 const companyNames = require('./server/routes/company-names');
+const results = require('./server/routes/results');
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 // Set our api routes
 app.use('/new-poll', api);
 app.use('/companies', companyNames);
+app.use('/results', results);
 
 // Catch all other routes and return the index file
 // app.get('*', (req, res) => {
