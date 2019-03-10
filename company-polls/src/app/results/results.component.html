@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row result-container" *ngFor="let reuslt of results; let index = index;">
+    <div class="col">
+      #{{index + 1}}
+    </div>
+    <div class="col">
+      <dd>Име</dd>
+      <dt>{{reuslt.employeeName}}</dt>
+    </div>
+    <div class="col">
+      <dd>Опит</dd>
+      <dt>{{reuslt.experience}}</dt>
+    </div>
+    <div class="col">
+      <dd>Последна длъжност</dd>
+      <dt>{{reuslt.lastPosition}}</dt>
+    </div>
+    <div class="col">
+      <dd>Заплата</dd>
+      <dt>{{reuslt.salaryRange}}</dt>
+    </div>
+    <div class="col">
+      <dd>Задължения</dd>
+      <dt>{{reuslt.responsibilities}}</dt>
+    </div>
+  </div>
+</div>

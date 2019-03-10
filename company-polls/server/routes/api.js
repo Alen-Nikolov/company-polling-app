@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
     experience: body.experience, lastPosition: body.lastPosition, salaryRange: body.salaryRange,
     responsibilities: body.responsibilities, companyPositionId: body.companyPositionId
   }).then((data) => {
-    res.status(201).send({message: 'Your poll results were successfully saved!'});
+    res.status(201).send({message: 'Вашите анкетни резултати бяха записани!'});
   });
 });
 

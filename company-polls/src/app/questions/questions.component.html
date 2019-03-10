@@ -1,16 +1,16 @@
 <div class="container" style="margin-top: 50px;">
   <div class="alert alert-success fade" data-dismiss="alert" role="alert" #modalMessage>
-    <strong>Well done!</strong> {{messageFromBackend}}
+    <strong>Успех!</strong> {{messageFromBackend}}
   </div>
   <div class="row">
     <div class="col-12">
       <form (ngSubmit)="onSubmit(f, modalMessage)" #f="ngForm">
         <div class="col-12" style="margin-bottom: 20px;">
-          <label for="employee-name">Your name</label>
-          <input type="text" name="name" id="employee-name" class="form-control" placeholder="Name" required ngModel>
+          <label for="employee-name">Вашето име</label>
+          <input type="text" name="name" id="employee-name" class="form-control" placeholder="Име" required ngModel>
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
-          <label for="company-id">Company name</label>
+          <label for="company-id">Името на компанията, за която сте работили</label>
           <select name="company-id" id="company-id" class="form-control" required ngModel (change)="selectCompany($event)">
             <option value=""></option>
             <option value="{{company.company_id}}" *ngFor="let company of companies">{{company.company_name}}</option>
@@ -18,7 +18,7 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <div class="form-group">
-            <label for="experience">Your experience</label>
+            <label for="experience">Опит</label>
             <select name="experience" id="experience" class="form-control" required ngModel>
               <option value=""></option>
               <option value="{{range}}" *ngFor="let range of experienceRanges">{{range}}</option>
@@ -27,7 +27,7 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <div class="form-group">
-            <label for="last-position">What position was your title?</label>
+            <label for="last-position">Как се е казвала вашата длъжност?</label>
             <select name="last-title" id="your-title" class="form-control" required ngModel>
               <option value=""></option>
               <option value="{{title.id}}" *ngFor="let title of companyTitles">{{title.position}}</option>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <div class="form-group">
-            <label for="last-position">What position did you hold at your last job?</label>
+            <label for="last-position">На какво професионанло ниво бяхте на предишната си работа?</label>
             <select name="last-position" id="last-position" class="form-control" required ngModel>
               <option value=""></option>
               <option value="{{position}}" *ngFor="let position of positionsAtCompany">{{position}}</option>
@@ -45,7 +45,7 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <div class="form-group">
-            <label for="salary-range">In what range was your salary? (in dollars)</label>
+            <label for="salary-range">Каква е била заплатата ви в долари?</label>
             <select name="salary-range" id="salary-range" class="form-control" required ngModel>
               <option value=""></option>
               <option value="{{salaryRange}}" *ngFor="let salaryRange of salaryRanges">{{salaryRange}}</option>
@@ -54,12 +54,12 @@
         </div>
         <div class="col-12" style="margin-bottom: 20px;">
           <div class="form-group">
-            <label for="responsibilities">Describe in 800 characters or less what you did at your last job:</label>
-            <textarea id="responsibilities" maxlength="800" class="form-control" ngModel name="responsibilities" required placeholder="Your responsibilities" cols="30" rows="6"></textarea>
+            <label for="responsibilities">Опишете в 800 символа или по-малко какви бяха задълженията ви на предишната работа</label>
+            <textarea id="responsibilities" maxlength="800" class="form-control" ngModel name="responsibilities" required placeholder="Задължения.." cols="30" rows="6"></textarea>
           </div>
         </div>
         <div class="col-12">
-          <button type="submit"  class="btn btn-success float-right" [disabled]="!f.valid">Submit</button>
+          <button type="submit"  class="btn btn-success float-right" [disabled]="!f.valid">Изпрати</button>
         </div>
       </form>
     </div>

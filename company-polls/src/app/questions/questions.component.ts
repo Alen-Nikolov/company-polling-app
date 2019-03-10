@@ -12,11 +12,11 @@ export class QuestionsComponent implements OnInit {
   companyTitles;
   companies = '';
   experienceRanges: string[] = [
-    '0-6 months',
-    '6-12 months',
-    '1-3 years',
-    '3-4 years',
-    'over 4 years'
+    '0-6 месеца',
+    '6-12 месеца',
+    '1-3 години',
+    '3-4 години',
+    'над 4 години'
   ];
   positionsAtCompany: string[] = [
     'Intern',
@@ -30,7 +30,7 @@ export class QuestionsComponent implements OnInit {
     '0-1000',
     '1000-2500',
     '2500-5000',
-    'more than 5000'
+    'повече от 5000'
   ];
   messageFromBackend = '';
 
